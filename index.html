@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lumina Digital | Premium Web Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+            },
+            colors: {
+              brand: {
+                yellow: '#FACC15',
+                gold: '#EAB308',
+                amber: '#F59E0B',
+                black: '#000000',
+                dark: '#09090b',
+                gray: '#F5F5F7',
+              }
+            },
+            animation: {
+              'float': 'float 6s ease-in-out infinite',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'gradient-shift': 'gradient-shift 15s ease infinite',
+              'rainbow-animate': 'rainbow-animate 8s linear infinite',
+              'fade-in-up': 'fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              'gradient-shift': {
+                '0%, 100%': { 'background-size': '400% 400%', 'background-position': '0% 50%' },
+                '50%': { 'background-size': '400% 400%', 'background-position': '100% 50%' },
+              },
+              'rainbow-animate': {
+                '0%': { 'background-position': '0% 50%' },
+                '100%': { 'background-position': '200% 50%' },
+              },
+              'fade-in-up': {
+                '0%': { opacity: '0', transform: 'translateY(40px) scale(0.98)' },
+                '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      html {
+        scroll-padding-top: 5rem;
+      }
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        cursor: default;
+        overflow-x: hidden;
+      }
+      .glass {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
+      }
+      .dark .glass {
+        background: rgba(9, 9, 11, 0.85);
+      }
+      .perspective-1000 { perspective: 1000px; }
+      .perspective-2000 { perspective: 2000px; }
+      .perspective-2500 { perspective: 2500px; }
+      
+      .text-gradient {
+        background: linear-gradient(180deg, #ffffff 0%, #a1a1a6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .text-gradient-dark {
+        background: linear-gradient(180deg, #000000 0%, #434345 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero-bg-animate {
+        background: linear-gradient(-45deg, #fefce8, #ffffff, #fef9c3, #ffffff);
+        background-size: 400% 400%;
+      }
+      .dark .hero-bg-animate {
+        background: linear-gradient(-45deg, #000000, #09090b, #020617, #09090b);
+        background-size: 400% 400%;
+      }
+      
+      .rainbow-glow-active {
+        position: relative;
+        z-index: 1;
+      }
+      .rainbow-glow-active::before {
+        content: '';
+        position: absolute;
+        inset: -3px;
+        background: linear-gradient(90deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+        background-size: 400%;
+        z-index: -1;
+        filter: blur(20px);
+        opacity: 0.15;
+        animation: rainbow-animate 12s linear infinite;
+        border-radius: inherit;
+        pointer-events: none;
+      }
+      .dark .rainbow-glow-active::before {
+        opacity: 0.25;
+        filter: blur(25px);
+      }
+
+      .btn-rainbow-glow {
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .btn-rainbow-glow::before {
+        content: '';
+        position: absolute;
+        inset: -2px;
+        background: linear-gradient(90deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+        background-size: 400%;
+        z-index: -1;
+        filter: blur(12px);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        animation: rainbow-animate 6s linear infinite;
+        border-radius: inherit;
+      }
+      .btn-rainbow-glow:hover::before {
+        opacity: 0.9;
+      }
+      .btn-rainbow-glow:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 30px 60px -12px rgba(0,0,0,0.4);
+      }
+      
+      .gold-text {
+        background: linear-gradient(to right, #fbbf24, #f59e0b, #facc15, #d97706, #fbbf24);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shine 4s linear infinite;
+      }
+      @keyframes shine {
+        to { background-position: 200% center; }
+      }
+
+      /* Better custom scrollbar for luxury feel */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: rgba(0,0,0,0.05);
+      }
+      .dark ::-webkit-scrollbar-track {
+        background: rgba(255,255,255,0.02);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border: 3px solid transparent;
+        background-clip: padding-box;
+        border-radius: 10px;
+        transition: background 0.3s ease;
+      }
+      .dark ::-webkit-scrollbar-thumb {
+        background: #333;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #FACC15;
+      }
+
+      /* Unified transition for all interactive elements */
+      a, button, input, textarea {
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      /* Prevent text selection during animations */
+      .select-none {
+        -webkit-user-select: none;
+        user-select: none;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.40.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-brand-gray dark:bg-brand-black text-brand-dark dark:text-white transition-colors duration-500 overflow-x-hidden font-sans">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

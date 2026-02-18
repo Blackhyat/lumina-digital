@@ -1,0 +1,7 @@
+{
+  "name": "Lumina Digital - Premium Web Studio",
+  "description": "An Apple-inspired premium web development agency platform focused on delivering luxury digital experiences for local businesses.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
